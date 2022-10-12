@@ -55,13 +55,14 @@ namespace ByteBank
                 leitor.LerProximaLinha();
                 leitor.LerProximaLinha();
                 leitor.LerProximaLinha();
-                
-                leitor.Fechar();
             }
             catch (IOException ex)
             {
-                leitor.Fechar();
                 Console.WriteLine("Exceção do tipo IOException capturada e tratada! ");
+            }
+            finally // bloco que sempre será executado
+            {
+                leitor.Fechar();
             }
         }
 
