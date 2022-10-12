@@ -60,12 +60,15 @@ namespace ByteBank
             // Operação matemática o número de contas influencia na taxa de operação, isso gera exception por realizar um divisão por 0
             //TaxaOperacao = 30 / TotalDeContasCriadas;
 
-            if(agencia <= 0)
+            if (agencia <= 0)
             {
-                throw new ArgumentException("Os argumentos agencia devem ser maior que 0.");
+                throw new ArgumentException("Os argumento agencia devem ser maior que 0.");
             }
-            
-           
+            if (numero <= 0)
+            {
+                throw new ArgumentException("Os argumento numero devem ser maior que 0.");
+            }
+
             TotalDeContasCriadas++;
         }
 
