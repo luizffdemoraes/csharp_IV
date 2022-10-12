@@ -12,7 +12,7 @@ namespace ByteBank
         {
             try
             {
-                ContaCorrente conta = new ContaCorrente(5025, 52665);
+                ContaCorrente conta = new ContaCorrente(0, 52665);
                 conta.Depositar(50);
                 Console.WriteLine(conta.Saldo);
                 conta.Sacar(500);
@@ -22,9 +22,10 @@ namespace ByteBank
             {
                 Console.WriteLine("Erro no parâmetro: " + ex.ParamName);
                 Console.WriteLine("Ocorreu um erro do tipo ArgumentException.");
+                Console.WriteLine(ex.StackTrace);
                 Console.WriteLine(ex.Message);
             }
-            catch(SaldoInsuficienteException ex)
+            catch (SaldoInsuficienteException ex)
             {
                 Console.WriteLine(ex.Message);
                 Console.WriteLine("Exceção do tipo SaldoInsuficienteException");
@@ -48,12 +49,15 @@ namespace ByteBank
 
         private static int Dividir(int numero, int divisor)
         {
-
-            return numero / divisor;
-
-            Console.WriteLine("Exceção com numero = " + "e divisor = " + divisor);
-            //throw ;
-
+            try
+            {
+                return numero / divisor;
+            }
+            catch
+            {
+                Console.WriteLine("Exceção com número = " + numero + " e divisor = " + divisor);
+                throw;
+            }
         }
 
         /*
